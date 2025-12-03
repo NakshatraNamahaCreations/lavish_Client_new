@@ -52,6 +52,7 @@ const ProfileForm = ({ setIsProfileSaved }) => {
   const profile = useSelector((state) => state.profile);
   const [error, setError] = useState(null);
   const [saving, setSaving] = useState(false);
+  const [hasRequiredFields, setHasRequiredFields] = useState(false);
 
   // Handle input changes
   const handleChange = (e) => {
@@ -77,26 +78,31 @@ const ProfileForm = ({ setIsProfileSaved }) => {
     dispatch(setProfile({ [name]: value }));
   };
 
+  // Check if required profile fields are filled
+  const checkRequiredFields = (profileData) => {
+    const requiredFields = [
+      'firstName',
+      'lastName', 
+      'mobile',
+      'addressLine1',
+      'city',
+      'pincode'
+    ];
+    
+    return requiredFields.every(field => 
+      profileData[field] && profileData[field].toString().trim() !== ''
+    );
+  };
+
   useEffect(() => {
     const fetchProfile = async () => {
-      const token = localStorage.getItem("accessToken");
-      const response = await getAxios().get("/admin/users/user/profile", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      try {
+        const token = localStorage.getItem("accessToken");
+        const response = await getAxios().get("/admin/users/user/profile", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
 
-      const {
-        firstName,
-        lastName,
-        mobile,
-        alternateMobile,
-        addressLine1,
-        addressLine2,
-        city,
-        pincode,
-      } = response.data.user;
-
-      dispatch(
-        setProfile({
+        const {
           firstName,
           lastName,
           mobile,
@@ -105,22 +111,39 @@ const ProfileForm = ({ setIsProfileSaved }) => {
           addressLine2,
           city,
           pincode,
-        })
-      );
+        } = response.data.user;
 
-      // Mark profile as saved if all required fields exist
-      if (
-        firstName &&
-        lastName &&
-        mobile &&
-        addressLine1 &&
-        city &&
-        pincode
-      ) {
-        setIsProfileSaved(true);
+        const profileData = {
+          firstName,
+          lastName,
+          mobile,
+          alternateMobile,
+          addressLine1,
+          addressLine2,
+          city,
+          pincode,
+        };
+
+        dispatch(setProfile(profileData));
+
+        // Check if all required fields exist and are non-empty
+        const hasAllFields = checkRequiredFields(profileData);
+        setHasRequiredFields(hasAllFields);
+        setIsProfileSaved(hasAllFields);
+        
+      } catch (error) {
+        console.error("Error fetching profile:", error);
+        setHasRequiredFields(false);
+        setIsProfileSaved(false);
       }
     };
-    fetchProfile();
+    
+    if (localStorage.getItem("accessToken")) {
+      fetchProfile();
+    } else {
+      setHasRequiredFields(false);
+      setIsProfileSaved(false);
+    }
   }, [dispatch]);
 
   const handleSubmit = async (e) => {
@@ -139,7 +162,10 @@ const ProfileForm = ({ setIsProfileSaved }) => {
       );
 
       if (response.status === 200) {
-        setIsProfileSaved(true);
+        // After saving, check if all required fields are filled
+        const hasAllFields = checkRequiredFields(profile);
+        setHasRequiredFields(hasAllFields);
+        setIsProfileSaved(hasAllFields);
       } else {
         setError("Unable to update profile");
       }
@@ -149,6 +175,39 @@ const ProfileForm = ({ setIsProfileSaved }) => {
       setSaving(false);
     }
   };
+
+  // If required fields are already filled, show a success message instead of form
+  if (hasRequiredFields) {
+    return (
+      <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+        <div className="flex items-center gap-3 mb-2">
+          <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+          <h3 className="text-lg font-semibold text-green-800">Profile Complete</h3>
+        </div>
+        <p className="text-green-700 mb-3">Your profile details are saved and ready for checkout.</p>
+        
+        {/* Optionally show the profile details in read-only mode */}
+        <div className="mt-4 p-3 bg-white border rounded-md">
+          <p className="font-medium">{profile.firstName} {profile.lastName}</p>
+          <p className="text-sm text-gray-600">Mobile: {profile.mobile}</p>
+          <p className="text-sm text-gray-600">
+            Address: {profile.addressLine1}, {profile.city} - {profile.pincode}
+          </p>
+          <button
+            type="button"
+            onClick={() => setHasRequiredFields(false)}
+            className="mt-3 text-primary text-sm font-medium hover:underline"
+          >
+            Edit Profile
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="overflow-y-auto scrollbar-hide">
@@ -1432,49 +1491,41 @@ const Checkout = () => {
               </div>
             </div>
 
-            <div className="my-10">
-              <button
-                onClick={handleProceedToPay}
-                disabled={!isProfileSaved || loading}
-                className={`${
-                  !isProfileSaved || loading
-                    ? "bg-gray-400 cursor-not-allowed"
-                    : "bg-primary"
-                } text-center py-3 mt-5 w-full text-white rounded-xl font-semibold text-xl flex justify-center items-center gap-3`}
-              >
-                {loading ? (
-                  <>
-                    <svg
-                      className="animate-spin h-6 w-6 text-white"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <circle
-                        className="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        strokeWidth="4"
-                      ></circle>
-                      <path
-                        className="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8v8z"
-                      ></path>
-                    </svg>
-                    Processing…
-                  </>
-                ) : !isProfileSaved ? (
-                  "Save Profile to Continue"
-                ) : (
-                  `PROCEED TO PAY | Rs. ${payNowAmount}`
-                )}
-              </button>
-
-              <img src={phonepe} className="w-100 h-100" />
-            </div>
+            <button
+  onClick={handleProceedToPay}
+  disabled={loading || !address.trim() || !selectedTimeSlot || !eventDate || !currentOrder.source || !currentOrder.occasion}
+  className={`
+    ${loading || !address.trim() || !selectedTimeSlot || !eventDate || !currentOrder.source || !currentOrder.occasion
+      ? "bg-gray-400 cursor-not-allowed"
+      : "bg-primary"
+    } text-center py-3 mt-5 w-full text-white rounded-xl font-semibold text-xl flex justify-center items-center gap-3`}
+>
+  {loading ? (
+    <>
+      <svg
+        className="animate-spin h-6 w-6 text-white"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <circle
+          className="opacity-25"
+          cx="12"
+          cy="12"
+          r="10"
+          stroke="currentColor"
+          strokeWidth="4"
+        ></circle>
+        <path
+          className="opacity-75"
+          fill="currentColor"
+          d="M4 12a8 8 0 018-8v8z"
+        ></path>
+      </svg>
+      Processing…
+    </>
+  ) : `PROCEED TO PAY | Rs. ${payNowAmount}`}
+</button>
           </div>
 
           {showModal && (
