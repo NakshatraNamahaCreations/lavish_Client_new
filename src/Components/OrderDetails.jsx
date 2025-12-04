@@ -271,34 +271,66 @@ const OrderDetails = () => {
 
       {/* Financial Info */}
       <section className="bg-white p-6 rounded-lg shadow-md">
-        <h2 className="text-lg font-semibold text-gray-800 mb-4 border-b pb-2">
-          Total Summary
+        {/* HEADER */}
+
+        {/* HEADER */}
+        <h2 className="text-lg font-semibold text-gray-900 mb-4 border-b pb-2">
+          Order Summary
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-gray-700">
-          <div>
-            <strong>Subtotal:</strong> ₹{order.subTotal}
+
+        {/* SUMMARY LIST */}
+        <div className="space-y-3 text-sm text-gray-800">
+          {/* Subtotal */}
+          <div className="flex justify-between bg-gray-50 p-3 rounded-md">
+            <strong>Subtotal:</strong>
+            <span className="text-xl font-bold">₹{order.subTotal}</span>
           </div>
-          <div>
-            <strong>Delivery Charges:</strong> ₹{order.deliveryCharges}
+
+          {/* Delivery Charges */}
+          <div className="flex justify-between bg-gray-50 p-3 rounded-md">
+            <strong>Delivery Charges:</strong>
+            <span className="text-xl font-bold">₹{order.deliveryCharges ? order.deliveryCharges :0}</span>
           </div>
-          <div>
-            <strong>Coupon Discount:</strong> ₹{order.couponDiscount}
+
+          {/* Discount */}
+          <div className="flex justify-between bg-gray-50 p-3 rounded-md">
+            <strong>Coupon Discount:</strong>
+            <span className="text-xl font-bold">- ₹{order.couponDiscount}</span>
           </div>
-          {/* <div><strong>GST:</strong> ₹{order.gstAmount}</div> */}
-          <div>
-            <strong>Paid:</strong> ₹{order.paidAmount}
+
+          {/* Paid Amount */}
+          <div className="flex justify-between bg-gray-50 p-3 rounded-md">
+            <strong>Paid Amount:</strong>
+            <span className="text-xl font-bold">₹{order.paidAmount}</span>
           </div>
-          {/* <div><strong>Due:</strong> ₹{order.dueAmount}</div> */}
+
+          {/* Due Amount (highlight if > 0) */}
+          <div
+            className={`flex justify-between p-3 rounded-md border 
+        ${
+          order.dueAmount > 0
+            ? "bg-red-50 border-red-400 text-red-700 font-semibold"
+            : "bg-green-50 border-green-300 text-green-700"
+        }`}
+          >
+            <strong>Due Amount:</strong>
+            <span className="text-xl font-bold">₹{order.dueAmount > 0 ? order.dueAmount : 0}</span>
+          </div>
+
+          {/* Slot Extra Charges */}
           {order.slotExtraCharge > 0 && (
-            <div>
-              <strong>Slot Extra Charge:</strong> ₹{order.slotExtraCharge}
+            <div className="flex justify-between bg-gray-50 p-3 rounded-md">
+              <strong>Slot Extra Charge:</strong>
+              <span className="text-xl font-bold">₹{order.slotExtraCharge}</span>
             </div>
           )}
-          <div>
-            <strong>Grand Total:</strong> ₹{order.grandTotal}
+
+          {/* Grand Total */}
+          <div className="flex justify-between bg-gray-100 p-3 rounded-md font-semibold text-gray-900 border border-gray-300">
+            <strong>Grand Total:</strong>
+            <span className="text-xl font-bold">₹{order.grandTotal}</span>
           </div>
         </div>
-
         <h2 className="text-lg font-semibold text-gray-800  border-b pb-2 mt-8">
           T&C
         </h2>
