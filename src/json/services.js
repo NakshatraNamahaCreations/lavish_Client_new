@@ -28,7 +28,7 @@ export const subcategory = [
     { subId: "21", subcatName: "Retirement Decoration", catId: "4", isSub_Sub: false ,  isAddons:true, },
     { subId: "22", subcatName: "Mundan Ceremony", catId: "4", isSub_Sub: false ,  isAddons:true, },
     { subId: "23", subcatName: "Proposal Decoration", catId: "4", isSub_Sub: false,   isAddons:true, bannerImg: "/images/proposalbanner.png" },
-    { subId: "24", subcatName: "Rice Ceremony Decor", catId: "4", isSub_Sub: false ,  isAddons:true, },
+    { subId: "24", subcatName: "Annaprashan Ceremony Decoration", catId: "4", isSub_Sub: false ,  isAddons:true, },
     { subId: "25", subcatName: "Baptism Decoration", catId: "4", isSub_Sub: false ,  isAddons:true, },
     { subId: "26", subcatName: "Half Saree Decoration", catId: "4", isSub_Sub: false ,  isAddons:true, },
     { subId: "27", subcatName: "Car Decoration", catId: "4", isSub_Sub: false ,  isAddons:false, },

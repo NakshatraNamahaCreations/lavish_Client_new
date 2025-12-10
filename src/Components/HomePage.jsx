@@ -57,7 +57,7 @@ const occasions = [
   },
   {
     src: "https://lavisheventzz-bangalore.b-cdn.net/rice_cermony.png",
-    title: "Rice Ceremony Decor",
+    title: "Annaprashan Ceremony Decoration",
     link: "/service",
   },
   {

@@ -52,7 +52,7 @@ const reviewData = [
       "Lavish Eventzz completely changed the look of our terrace into a magical birthday zone. The fairy lights, balloon arches, and backdrop were picture-perfect. Guests couldn’t stop complimenting the décor!",
     profileimg:
       "https://images.unsplash.com/photo-1511485977113-f34c92461ad9?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    serviceName: "Rice Ceremony Decoration",
+    serviceName: "Annaprashan Ceremony Decoration",
     rating: "5.0",
     servicethemeImg: "https://lavisheventzz-bangalore.b-cdn.net/Rice%20Ceremony%20Theme%20Charming%20Decor.jpeg",
   },
