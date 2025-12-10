@@ -483,7 +483,7 @@ const Kidsbirthday = () => {
           </h5>
           <div
             className="linkColorPink text-purple-600 underline text-sm font-semibold hover:text-blue-800 cursor-pointer"
-            onClick={() => handleNavigation("Welcome Baby", "/service/")}
+           onClick={() => navigate("/all-services/681b1136ddb6b3f4663e78f4")}
           >
             View All
           </div>
