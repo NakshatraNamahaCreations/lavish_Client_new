@@ -128,35 +128,8 @@ const reviewData = [
     rating: "5.0",
     servicethemeImg:
      "https://lavisheventzz-bangalore.b-cdn.net/newp/new%20edi%20pics/WhatsApp%20Image%202025-08-01%20at%205.05.10%20PM.jpeg",
-    review:
-      "Absolutely fantastic service! They were thorough, detail-oriented, and made the whole process seamless. Five stars!",
-    profileimg: "",
-    serviceName: "Ring Ceremony Sparkling Decor",
-    rating: "5.0",
-    servicethemeImg:
-      "https://lavisheventzz-bangalore.b-cdn.net/newp/new%20edi%20pics/WhatsApp%20Image%202025-08-01%20at%2010.20.46%20PM.jpeg",
   },
-  // {
-  //   name: "Priya Menon",
-  //   review:
-  //     "I am truly happy with the service provided! The attention to detail and quality were remarkable. Thank you!",
-  //   profileimg:
-  //     "https://images.unsplash.com/photo-1517265035603-faefa167335b?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  //   serviceName: "Barbie Theme Decoration",
-  //   rating: "4.5",
-  //   servicethemeImg:
-  //     "https://lavisheventzz-bangalore.b-cdn.net/Barbie%20Theme%20%20Charming%20Decor.jpg",
-  // },
-  // {
-  //   name: "Ankit Joshi",
-  //   review:
-  //     "A wonderful experience! Everything was handled with professionalism and efficiency. Looking forward to working with them again.",
-  //   profileimg:
-  //     "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  //   serviceName: "Mehendi decoration",
-  //   rating: "5.0",
-  //   servicethemeImg: "https://lavisheventzz-bangalore.b-cdn.net/Mehendi.png",
-  // },
+ 
 ];
 
 const RingCermony = () => {
