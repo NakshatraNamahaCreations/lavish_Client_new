@@ -81,16 +81,17 @@ const ProfileForm = ({ setIsProfileSaved }) => {
   // Check if required profile fields are filled
   const checkRequiredFields = (profileData) => {
     const requiredFields = [
-      'firstName',
-      'lastName', 
-      'mobile',
-      'addressLine1',
-      'city',
-      'pincode'
+      "firstName",
+      "lastName",
+      "mobile",
+      "addressLine1",
+      "city",
+      "pincode",
     ];
-    
-    return requiredFields.every(field => 
-      profileData[field] && profileData[field].toString().trim() !== ''
+
+    return requiredFields.every(
+      (field) =>
+        profileData[field] && profileData[field].toString().trim() !== ""
     );
   };
 
@@ -130,14 +131,13 @@ const ProfileForm = ({ setIsProfileSaved }) => {
         const hasAllFields = checkRequiredFields(profileData);
         setHasRequiredFields(hasAllFields);
         setIsProfileSaved(hasAllFields);
-        
       } catch (error) {
         console.error("Error fetching profile:", error);
         setHasRequiredFields(false);
         setIsProfileSaved(false);
       }
     };
-    
+
     if (localStorage.getItem("accessToken")) {
       fetchProfile();
     } else {
@@ -182,17 +182,33 @@ const ProfileForm = ({ setIsProfileSaved }) => {
       <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
         <div className="flex items-center gap-3 mb-2">
           <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
-            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+            <svg
+              className="w-4 h-4 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M5 13l4 4L19 7"
+              ></path>
             </svg>
           </div>
-          <h3 className="text-lg font-semibold text-green-800">Profile Complete</h3>
+          <h3 className="text-lg font-semibold text-green-800">
+            Profile Complete
+          </h3>
         </div>
-        <p className="text-green-700 mb-3">Your profile details are saved and ready for checkout.</p>
-        
+        <p className="text-green-700 mb-3">
+          Your profile details are saved and ready for checkout.
+        </p>
+
         {/* Optionally show the profile details in read-only mode */}
         <div className="mt-4 p-3 bg-white border rounded-md">
-          <p className="font-medium">{profile.firstName} {profile.lastName}</p>
+          <p className="font-medium">
+            {profile.firstName} {profile.lastName}
+          </p>
           <p className="text-sm text-gray-600">Mobile: {profile.mobile}</p>
           <p className="text-sm text-gray-600">
             Address: {profile.addressLine1}, {profile.city} - {profile.pincode}
@@ -368,6 +384,8 @@ const ProfileForm = ({ setIsProfileSaved }) => {
   );
 };
 
+
+
 const Checkout = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -444,11 +462,32 @@ const Checkout = () => {
   const customerId = userData?.id;
   // console.log("Customer ID", customerId);
 
+  
+  const checkRequiredProfileFields = (profileData) => {
+    const requiredFields = [
+      "firstName",
+      "lastName",
+      "mobile",
+      "addressLine1",
+      "city",
+      "pincode",
+    ];
+
+    return requiredFields.every(
+      (field) =>
+        profileData[field] && profileData[field].toString().trim() !== ""
+    );
+  };
+
   useEffect(() => {
     if (!customerId) {
       setShowLoginModal(true);
-    } else {
-      const fetchProfile = async () => {
+      setIsProfileSaved(false);
+      return;
+    }
+
+    const fetchProfile = async () => {
+      try {
         const token = localStorage.getItem("accessToken");
         const response = await getAxios().get("/admin/users/user/profile", {
           headers: {
@@ -456,36 +495,22 @@ const Checkout = () => {
           },
         });
 
-        const {
-          firstName,
-          lastName,
-          mobile,
-          alternateMobile,
-          addressLine1,
-          addressLine2,
-          city,
-          state,
-          pincode,
-          landmark,
-        } = response.data.user;
-        dispatch(
-          setProfile({
-            firstName,
-            lastName,
-            mobile,
-            alternateMobile,
-            addressLine1,
-            addressLine2,
-            city,
-            state,
-            pincode,
-            landmark,
-          })
-        );
-      };
-      fetchProfile();
-    }
-  }, [customerId]);
+        const userProfile = response.data.user;
+
+        // ✅ Save profile to redux
+        dispatch(setProfile(userProfile));
+
+        // ✅ Validate required fields immediately
+        const isComplete = checkRequiredProfileFields(userProfile);
+        setIsProfileSaved(isComplete);
+      } catch (err) {
+        console.error("Failed to fetch profile", err);
+        setIsProfileSaved(false);
+      }
+    };
+
+    fetchProfile();
+  }, [customerId, dispatch]);
 
   // ⭐ SET DEFAULT PAYMENT TYPE HERE
   useEffect(() => {
@@ -715,6 +740,21 @@ const Checkout = () => {
       ? Math.round(displayGrandTotal / 2)
       : displayGrandTotal;
 
+      const canProceed =
+    isProfileSaved &&
+    address?.trim() &&
+    pincode &&
+    currentOrder.source &&
+    currentOrder.occasion &&
+    (currentOrder.occasion !== "others" ||
+      currentOrder.otherOccasion?.trim()) &&
+    currentOrder.decorLocation &&
+    (currentOrder.decorLocation !== "others" ||
+      currentOrder.otherDecorLocation?.trim()) &&
+    eventDate &&
+    selectedTimeSlot;
+
+    
   const handleProceedToPay = async () => {
     setLoading(true);
     setError(null);
@@ -730,6 +770,11 @@ const Checkout = () => {
       }
 
       const userData = JSON.parse(storedUser);
+
+      if (!isProfileSaved) {
+        alert("Please complete and save your profile details before booking.");
+        return;
+      }
 
       // VALIDATION
       if (!address.trim()) return alert("Please enter venue address");
@@ -1066,6 +1111,7 @@ const Checkout = () => {
                       onChange={(e) =>
                         dispatch(setDecorLocation(e.target.value))
                       }
+                      required
                     >
                       <option value="" className="text-gray-400">
                         Select Location
@@ -1492,40 +1538,46 @@ const Checkout = () => {
             </div>
 
             <button
-  onClick={handleProceedToPay}
-  disabled={loading || !address.trim() || !selectedTimeSlot || !eventDate || !currentOrder.source || !currentOrder.occasion}
-  className={`
-    ${loading || !address.trim() || !selectedTimeSlot || !eventDate || !currentOrder.source || !currentOrder.occasion
-      ? "bg-gray-400 cursor-not-allowed"
-      : "bg-primary"
-    } text-center py-3 mt-5 w-full text-white rounded-xl font-semibold text-xl flex justify-center items-center gap-3`}
->
-  {loading ? (
-    <>
-      <svg
-        className="animate-spin h-6 w-6 text-white"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-      >
-        <circle
-          className="opacity-25"
-          cx="12"
-          cy="12"
-          r="10"
-          stroke="currentColor"
-          strokeWidth="4"
-        ></circle>
-        <path
-          className="opacity-75"
-          fill="currentColor"
-          d="M4 12a8 8 0 018-8v8z"
-        ></path>
-      </svg>
-      Processing…
-    </>
-  ) : `PROCEED TO PAY | Rs. ${payNowAmount}`}
-</button>
+              disabled={loading || !canProceed}
+              onClick={handleProceedToPay}
+              className={`w-full py-4 rounded-xl font-semibold text-white ${
+                loading || !canProceed
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-primary"
+              }`}
+            >
+              {loading ? (
+                <>
+                  <svg
+                    className="animate-spin h-6 w-6 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8v8z"
+                    ></path>
+                  </svg>
+                  Processing…
+                </>
+              ) : !isProfileSaved ? (
+                "Complete Profile to Proceed"
+              ) : loading ? (
+                "Processing…"
+              ) : (
+                `PROCEED TO PAY | Rs. ${payNowAmount}`
+              )}
+            </button>
           </div>
 
           {showModal && (

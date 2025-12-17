@@ -25,7 +25,7 @@ const banners = {
   "Haldi Decor": "https://lavisheventzz-bangalore.b-cdn.net/banner/haldi.jpg",
   "Mehendi Decor":
     "https://lavisheventzz-bangalore.b-cdn.net/banner/mendhi.jpg",
-  "Rice Ceremony Decor":
+  "Annaprashan Ceremony Decoration":
     "https://lavisheventzz-bangalore.b-cdn.net/banner/riceceremony.jpg",
   "Retirement Decoration":
     "https://lavisheventzz-bangalore.b-cdn.net/banner/retirment.jpg",
