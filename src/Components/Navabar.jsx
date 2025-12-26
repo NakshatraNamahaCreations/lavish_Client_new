@@ -432,7 +432,7 @@ const Navbar = () => {
                       } else if (item.subCategory.includes("Naming Ceremony")) {
                         linkPath = `/namingceremonydecor/${item._id}`;
                       } else if (item.subCategory.includes("Photography")) {
-                        linkPath = `/photography/${item._id}`;
+                        linkPath = `/photography-service/${item._id}`;
                       }
 
                       return (
@@ -569,7 +569,7 @@ const Navbar = () => {
                             } else if (
                               item.subCategory.includes("Photography")
                             ) {
-                              linkPath = `/photography/${item._id}`;
+                              linkPath = `/photography-service/${item._id}`;
                             }
 
                             return (

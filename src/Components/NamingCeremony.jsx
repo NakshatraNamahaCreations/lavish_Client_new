@@ -34,9 +34,7 @@ const addOns = [
 const reviewData = [
   {
     name: "Nisha Sharma",
-    profileimg:
-      "https://images.unsplash.com/photo-1601268588577-319223ba7cb3?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    review:
+ review:
       "The service was exceptional! The team was professional, attentive, and delivered beyond our expectations. Highly recommended!",
     serviceName: "Naming Ceremony Celebration Decor",
     rating: "4.5",
@@ -47,9 +45,7 @@ const reviewData = [
     name: "Riya Sharma",
     review:
       "I had an amazing experience! The team was friendly, and the service was prompt and efficient. Will definitely use them again!",
-    profileimg:
-      "https://images.unsplash.com/photo-1681717166573-f71589207785?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    serviceName: "Elegant Naming Ceremony Ring Decor In Bangalore",
+ serviceName: "Elegant Naming Ceremony Ring Decor In Bangalore",
     rating: "5.0",
     servicethemeImg:
       "https://lavisheventzz-bangalore.b-cdn.net/shop%20open%20decor/WhatsApp%20Image%202025-11-09%20at%202.36.45%20PM.jpeg",
@@ -59,7 +55,7 @@ const reviewData = [
     name: "Neha Verma",
     review:
       "The quality of work was outstanding! The team was responsive, patient, and delivered exactly what I needed.",
-    profileimg: "",
+ 
     serviceName: "Naming Ceremony Traditional Setup",
     rating: "4.7",
     servicethemeImg:
@@ -69,7 +65,7 @@ const reviewData = [
     name: "Pooja Singh",
     review:
       "Truly impressed! The entire process was smooth, and they ensured every detail was taken care of.",
-    profileimg: "",
+   
     serviceName: "Naming Ceremony Flower Decortion",
     rating: "5.0",
     servicethemeImg:
@@ -79,9 +75,7 @@ const reviewData = [
     name: "Sanjay Rao",
     review:
       "Great experience! The team was highly professional and completed the work before the deadline. Will recommend to everyone!",
-    profileimg:
-      "https://images.unsplash.com/photo-1511485977113-f34c92461ad9?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    serviceName: "Naming Ceremony Golden Bell Decor",
+ serviceName: "Naming Ceremony Golden Bell Decor",
     rating: "5.0",
     servicethemeImg:
       "https://lavisheventzz-bangalore.b-cdn.net/WhatsApp%20Image%202025-09-21%20at%2011.36.26%20PM.webp",
@@ -90,9 +84,7 @@ const reviewData = [
     name: "Meera Kapoor",
     review:
       "Exceptional service! They were quick to respond and delivered exactly what was promised. Will definitely hire again.",
-    profileimg:
-      "https://images.unsplash.com/photo-1555685812-4b943f1cb0eb?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    serviceName: "Baby Boy Revelation Celebration Decor",
+ serviceName: "Baby Boy Revelation Celebration Decor",
     rating: "4.5",
     servicethemeImg: "https://lavisheventzz-bangalore.b-cdn.net/Naming%20Ceremony%20Decoration/Naming%20Ceremony%20Boy%20Baby%20Wall%20Flecx%20Decor.jpeg",
   },
@@ -100,9 +92,7 @@ const reviewData = [
     name: "Rohan Desai",
     review:
       "Reliable and professional! The team went above and beyond to ensure customer satisfaction. Highly recommended!",
-    profileimg:
-      "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    serviceName: "Naming Ceremony Girl Baby Garland Arch",
+serviceName: "Naming Ceremony Girl Baby Garland Arch",
     rating: "5.0",
     servicethemeImg:
       "https://lavisheventzz-bangalore.b-cdn.net/newp/WhatsApp%20Image%202025-07-28%20at%209.36.43%20AM.jpeg",
@@ -111,33 +101,13 @@ const reviewData = [
     name: "Vikram Patel",
     review:
       "Absolutely fantastic service! They were thorough, detail-oriented, and made the whole process seamless. Five stars!",
-    profileimg: "",
+   
     serviceName: "Naming Ceremony Name Reveal Decor",
     rating: "5.0",
     servicethemeImg:
       "https://lavisheventzz-bangalore.b-cdn.net/Naming%20Ceremony%20Decoration/Naming%20Ceremony%20Sparkling%20Decor.jpeg",
   },
-  // {
-  //   name: "Priya Menon",
-  //   review:
-  //     "I am truly happy with the service provided! The attention to detail and quality were remarkable. Thank you!",
-  //   profileimg:
-  //     "https://images.unsplash.com/photo-1517265035603-faefa167335b?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  //   serviceName: "Barbie Theme Decoration",
-  //   rating: "4.5",
-  //   servicethemeImg:
-  //     "https://lavisheventzz-bangalore.b-cdn.net/Barbie%20Theme%20%20Charming%20Decor.jpg",
-  // },
-  // {
-  //   name: "Ankit Joshi",
-  //   review:
-  //     "A wonderful experience! Everything was handled with professionalism and efficiency. Looking forward to working with them again.",
-  //   profileimg:
-  //     "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  //   serviceName: "Mehendi decoration",
-  //   rating: "5.0",
-  //   servicethemeImg: "https://lavisheventzz-bangalore.b-cdn.net/Mehendi.png",
-  // },
+
 ];
 
 const NamingCeremony = () => {
@@ -563,7 +533,7 @@ const NamingCeremony = () => {
       {/* Redirect to photography */}
       <div
         className="md:pt-20 py-5"
-        onClick={() => handleNavigation("photography", "/photography")}
+        onClick={() => handleNavigation("photography", "/photography-service")}
       >
         <img
           loading="lazy"

@@ -159,7 +159,7 @@ const Service = () => {
     "681b113eddb6b3f4663e78f9": "/birthdaydecoration/681b113eddb6b3f4663e78f9",
     "681b1146ddb6b3f4663e78fe": "/babyshowerdecor/681b1146ddb6b3f4663e78fe",
     "681b1240ddb6b3f4663e794c": "/welcomebabydecor/681b1240ddb6b3f4663e794c",
-    "681b1255ddb6b3f4663e7956": "/photography/681b1255ddb6b3f4663e7956",
+    "681b1255ddb6b3f4663e7956": "/photography-service/681b1255ddb6b3f4663e7956",
     "681b124bddb6b3f4663e7951": "/namingceremonydecor/681b124bddb6b3f4663e7951",
     "681b1238ddb6b3f4663e7947": "/entertainmentdecor/681b1238ddb6b3f4663e7947",
   };

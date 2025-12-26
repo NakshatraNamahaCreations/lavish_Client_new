@@ -129,7 +129,7 @@ function App() {
                 element={<Entertainment />}
               />
               <Route
-                path="/photography/:subcat_id"
+                path="/photography-service/:subcat_id"
                 element={<Photograpghy />}
               />
               {/* <Route path="/login" element={<Login />} /> */}

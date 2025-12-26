@@ -57,9 +57,7 @@ const addOns = [
 const reviewData = [
   {
     name: "Nisha Sharma",
-    profileimg:
-      "https://images.unsplash.com/photo-1601268588577-319223ba7cb3?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    review:
+   review:
       "The service was exceptional! The team was professional, attentive, and delivered beyond our expectations. Highly recommended!",
     serviceName: "Gorgeous Groom To Be Decoration",
     rating: "4.5",
@@ -70,9 +68,7 @@ const reviewData = [
     name: "Riya Sharma",
     review:
       "I had an amazing experience! The team was friendly, and the service was prompt and efficient. Will definitely use them again!",
-    profileimg:
-      "https://images.unsplash.com/photo-1681717166573-f71589207785?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    serviceName: "Groom To Be Wall Pop Decor",
+   serviceName: "Groom To Be Wall Pop Decor",
     rating: "5.0",
     servicethemeImg:
       "https://lavisheventzz-bangalore.b-cdn.net/dakshak/WhatsApp%20Image%202025-08-08%20at%2010.10.33%20PM.jpeg",
@@ -82,7 +78,7 @@ const reviewData = [
     name: "Neha Verma",
     review:
       "The quality of work was outstanding! The team was responsive, patient, and delivered exactly what I needed.",
-    profileimg: "",
+  
     serviceName: "Stylish Groom To Be Arch Decoration",
     rating: "4.7",
     servicethemeImg:
@@ -92,7 +88,7 @@ const reviewData = [
     name: "Pooja Singh",
     review:
       "Truly impressed! The entire process was smooth, and they ensured every detail was taken care of.",
-    profileimg: "",
+   
     serviceName: "Groom To Be Ring Classy Decor",
     rating: "5.0",
     servicethemeImg:
@@ -102,9 +98,7 @@ const reviewData = [
     name: "Sanjay Rao",
     review:
       "Great experience! The team was highly professional and completed the work before the deadline. Will recommend to everyone!",
-    profileimg:
-      "https://images.unsplash.com/photo-1511485977113-f34c92461ad9?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    serviceName: "Groom To Be Silver Panel Decor",
+  serviceName: "Groom To Be Silver Panel Decor",
     rating: "5.0",
     servicethemeImg:
       "https://lavisheventzz-bangalore.b-cdn.net/groom%20to%20be%20main%20images/Groom%20To%20Be%20Silver%20Panel%20Decor.jpeg",
@@ -113,9 +107,7 @@ const reviewData = [
     name: "Meera Kapoor",
     review:
       "Exceptional service! They were quick to respond and delivered exactly what was promised. Will definitely hire again.",
-    profileimg:
-      "https://images.unsplash.com/photo-1555685812-4b943f1cb0eb?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    serviceName: "Groom To Be Elegant Decor",
+ serviceName: "Groom To Be Elegant Decor",
     rating: "4.5",
     servicethemeImg: "https://lavisheventzz-bangalore.b-cdn.net/newp/WhatsApp%20Image%202025-07-29%20at%209.27.51%20AM.jpeg",
   },
@@ -123,9 +115,7 @@ const reviewData = [
     name: "Rohan Desai",
     review:
       "Reliable and professional! The team went above and beyond to ensure customer satisfaction. Highly recommended!",
-    profileimg:
-      "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    serviceName: "Groom To Be Budget Friendly Decor",
+   serviceName: "Groom To Be Budget Friendly Decor",
     rating: "5.0",
     servicethemeImg:
       "https://lavisheventzz-bangalore.b-cdn.net/groom%20to%20be%20main%20images/Groom%20To%20Be%20Budget%20Friendly%20Decor.jpeg",
@@ -134,33 +124,13 @@ const reviewData = [
     name: "Vikram Patel",
     review:
       "Absolutely fantastic service! They were thorough, detail-oriented, and made the whole process seamless. Five stars!",
-    profileimg: "",
+   
     serviceName: "Groom To Be Full Arch Decor",
     rating: "5.0",
     servicethemeImg:
       "https://lavisheventzz-bangalore.b-cdn.net/Mundan%20Ceremony/Mundan%20Ceremony%20Addons/WhatsApp%20Image%202025-07-19%20at%2011.40.23%20PM.jpeg",
   },
-  // {
-  //   name: "Priya Menon",
-  //   review:
-  //     "I am truly happy with the service provided! The attention to detail and quality were remarkable. Thank you!",
-  //   profileimg:
-  //     "https://images.unsplash.com/photo-1517265035603-faefa167335b?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  //   serviceName: "Barbie Theme Decoration",
-  //   rating: "4.5",
-  //   servicethemeImg:
-  //     "https://lavisheventzz-bangalore.b-cdn.net/Barbie%20Theme%20%20Charming%20Decor.jpg",
-  // },
-  // {
-  //   name: "Ankit Joshi",
-  //   review:
-  //     "A wonderful experience! Everything was handled with professionalism and efficiency. Looking forward to working with them again.",
-  //   profileimg:
-  //     "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  //   serviceName: "Mehendi decoration",
-  //   rating: "5.0",
-  //   servicethemeImg: "https://lavisheventzz-bangalore.b-cdn.net/Mehendi.png",
-  // },
+  
 ];
 
 const GroomtoBe = () => {
@@ -593,7 +563,7 @@ const GroomtoBe = () => {
 
       <div
         className="md:pt-20 py-5"
-        onClick={() => handleNavigation("photography", "/photography")}
+        onClick={() => handleNavigation("photography", "/photography-service")}
       >
         <img
           loading="lazy"

@@ -124,12 +124,12 @@ const TestimonialsCard = ({ item }) => {
   return (
     <div className="py-2 bg-white shadow-[4px_5px_#D3D3D3] max-w-72 mx-auto  rounded-md  lg:mb-6 ">
       <div className="mx-auto text-center">
-        <img
+        {/* <img
           src={profileimg ? profileimg : user}
           className="rounded-full w-16 h-16 mx-auto object-cover "
           alt="userprofile"
-        />
-        <p className="font-bold">{name}</p>
+        /> */}
+        <p className="font-bold " style={{fontSize:"18px", marginBottom:"6px"}}>{name}</p>
         <p className="flex gap-2 items-center justify-center text-green-700 text-sm">
           <FaCircleCheck />
           Verified Purcahse
